@@ -10,17 +10,12 @@ from nltk.stem import PorterStemmer, WordNetLemmatizer
 import re
 import string
 
-# Vérifier et télécharger les ressources NLTK nécessaires
-try:
-    stop_words = set(stopwords.words('french'))
-except LookupError:
-    nltk.download('stopwords')
-    stop_words = set(stopwords.words('french'))
+# Télécharger les ressources NLTK nécessaires
+nltk.download('stopwords')
+nltk.download('punkt')
 
-try:
-    nltk.data.find('tokenizers/punkt')
-except LookupError:
-    nltk.download('punkt')
+# Charger les stopwords et le tokenizer punkt après téléchargement
+stop_words = set(stopwords.words('french'))
 
 # Charger le DataFrame
 df = pd.read_csv('df_final.csv')
@@ -35,7 +30,7 @@ def preprocess_text(text):
     text = re.sub(r'\d+', '', text)
     text = text.translate(str.maketrans('', '', string.punctuation))
     text = text.strip()
-    tokens = word_tokenize(text)
+    tokens = word_tokenize(text)  # Utilise 'punkt' pour la tokenization
     tokens = [word for word in tokens if word not in stop_words]
     tokens = [stemmer.stem(word) for word in tokens]
     tokens = [lemmatizer.lemmatize(word) for word in tokens]
@@ -43,9 +38,6 @@ def preprocess_text(text):
     return preprocessed_text
 
 df['text_preprocessed'] = df['overview_french'].apply(preprocess_text)
-
-# Le reste de votre code
-
 
 # Créer une instance de TfidfVectorizer et transformer le texte prétraité en vecteurs TF-IDF
 vectorizer = TfidfVectorizer(max_df=0.99, min_df=2)
