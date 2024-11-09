@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Ignorer les dossiers d'environnement virtuel
 venv/
 env/
@@ -26,3 +27,6 @@ __pycache__/
 
 # Autres fichiers/dossiers potentiellement inutiles
 *.db
+=======
+
+>>>>>>> 43c305ae99189aa5fa2f31c8f7687bc6edc77e3e
