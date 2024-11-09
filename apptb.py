@@ -315,21 +315,18 @@ plt.title('Heatmap de la Matrice de Corrélation')
 plt.show()
 
 
+
+
 def run_app_py():
-    # Commande pour lancer une nouvelle instance de Streamlit avec app.py
-    command = ["streamlit", "run", "app.py", "--server.port", "8502"]
-    # Lancer le processus sans bloquer l'interface utilisateur actuelle
-    subprocess.Popen(command)
-
-    # Chemin vers le fichier exécutable de Chrome
-    chrome_path = r"C:\Program Files\Google\Chrome\Application\chrome.exe"  # Assurez-vous que ce chemin est correct
-    # URL de l'application Streamlit
-    url = 'https://recommandation-de-film.streamlit.app'
-    # Démarrer Chrome avec l'URL donnée après un court délai pour permettre à l'application de démarrer
-
-    subprocess.Popen([chrome_path, url])
+    # Pas besoin de lancer Chrome sur Streamlit Cloud
+    # Suppression de subprocess pour ouvrir le navigateur local
+    url = 'https://recommandation-de-film.streamlit.app/'  # URL de l'application Streamlit déployée
+    return url
 
 st.title("Accès au système de recommandation de film")
-if st.button("Lancer le Moteur De Recommandation Des Films"):
-    run_app_py()
-    st.success("app.py est lancé sur Chrome à 'https://recommandation-de-film.streamlit.app'")
+if st.button("Accéder à l'application en ligne"):
+    app_url = run_app_py()
+    st.success(f"Application disponible en ligne à {app_url}")
+    # Affichez le lien en tant que lien cliquable
+    st.markdown(f"[Ouvrir l'application]({app_url})")
+
