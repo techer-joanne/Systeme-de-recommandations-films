@@ -13,6 +13,7 @@ import string
 # Télécharger les ressources NLTK nécessaires
 nltk.download('stopwords')
 nltk.download('punkt')
+nltk.download('punkt_tab') 
 
 # Charger les stopwords et le tokenizer punkt après téléchargement
 stop_words = set(stopwords.words('french'))
