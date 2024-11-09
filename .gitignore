@@ -1,32 +1,9 @@
-<<<<<<< HEAD
-# Ignorer les dossiers d'environnement virtuel
-venv/
-env/
-
-# Ignorer les fichiers de compilation Python
-__pycache__/
-*.py[cod]
-*$py.class
-
-# Ignorer les fichiers Jupyter Notebook
+# Ignorer tous les fichiers .ipynb
 *.ipynb
-.ipynb_checkpoints/
 
-# Ignorer les fichiers de traitement de texte
+# Ignorer le dossier venv
+venv/
+
+# Ignorer les fichiers Word
 *.docx
 
-# Ignorer les fichiers spécifiques à l'éditeur
-.vscode/
-.idea/
-
-# Ignorer les fichiers de logs, de données et temporaires
-*.log
-*.csv
-*.tmp
-*.bak
-
-# Autres fichiers/dossiers potentiellement inutiles
-*.db
-=======
-
->>>>>>> 43c305ae99189aa5fa2f31c8f7687bc6edc77e3e
