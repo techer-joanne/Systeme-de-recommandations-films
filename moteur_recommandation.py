@@ -1,5 +1,3 @@
-# moteur_recommandation.py
-
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -8,6 +6,7 @@ import spacy
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import PorterStemmer, WordNetLemmatizer
+import nltk
 import re
 import string
 
@@ -15,8 +14,14 @@ import string
 df = pd.read_csv('df_final.csv')
 
 # Prétraitement du texte (comme dans les étapes précédentes)
+# Vérifier et télécharger les stopwords si nécessaire
+try:
+    stop_words = set(stopwords.words('french'))
+except LookupError:
+    nltk.download('stopwords')
+    stop_words = set(stopwords.words('french'))
+
 nlp = spacy.load('fr_core_news_sm')
-stop_words = set(stopwords.words('french'))
 stemmer = PorterStemmer()
 lemmatizer = WordNetLemmatizer()
 
