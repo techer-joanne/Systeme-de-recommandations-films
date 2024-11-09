@@ -1,13 +1,6 @@
 import streamlit as st
 import pandas as pd
 from moteur_recommandation import get_recommendations_tfidf
-import spacy
-try:
-    nlp = spacy.load("fr_core_news_sm")
-except OSError:
-    from spacy.cli import download
-    download("fr_core_news_sm")
-    nlp = spacy.load("fr_core_news_sm")
 
 
 # Configuration de la page en mode large

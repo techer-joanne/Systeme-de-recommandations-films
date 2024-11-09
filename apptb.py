@@ -324,12 +324,12 @@ def run_app_py():
     # Chemin vers le fichier exécutable de Chrome
     chrome_path = r"C:\Program Files\Google\Chrome\Application\chrome.exe"  # Assurez-vous que ce chemin est correct
     # URL de l'application Streamlit
-    url = 'http://localhost:8502'
+    url = 'https://recommandation-de-film.streamlit.app'
     # Démarrer Chrome avec l'URL donnée après un court délai pour permettre à l'application de démarrer
 
     subprocess.Popen([chrome_path, url])
 
 st.title("Accès au système de recommandation de film")
-if st.button("Lancer app.py"):
+if st.button("Lancer le Moteur De Recommandation Des Films"):
     run_app_py()
-    st.success("app.py est lancé sur Chrome à http://localhost:8502")
+    st.success("app.py est lancé sur Chrome à 'https://recommandation-de-film.streamlit.app'")
