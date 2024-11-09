@@ -14,6 +14,7 @@ import string
 nltk.download('stopwords')
 nltk.download('punkt')
 nltk.download('punkt_tab') 
+nltk.download('wordnet')
 
 # Charger les stopwords et le tokenizer punkt après téléchargement
 stop_words = set(stopwords.words('french'))
