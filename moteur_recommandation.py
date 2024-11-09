@@ -1,3 +1,4 @@
+import nltk
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -6,21 +7,25 @@ import spacy
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import PorterStemmer, WordNetLemmatizer
-import nltk
 import re
 import string
 
-# Charger le DataFrame
-df = pd.read_csv('df_final.csv')
-
-# Prétraitement du texte (comme dans les étapes précédentes)
-# Vérifier et télécharger les stopwords si nécessaire
+# Vérifier et télécharger les ressources NLTK nécessaires
 try:
     stop_words = set(stopwords.words('french'))
 except LookupError:
     nltk.download('stopwords')
     stop_words = set(stopwords.words('french'))
 
+try:
+    nltk.data.find('tokenizers/punkt')
+except LookupError:
+    nltk.download('punkt')
+
+# Charger le DataFrame
+df = pd.read_csv('df_final.csv')
+
+# Prétraitement du texte
 nlp = spacy.load('fr_core_news_sm')
 stemmer = PorterStemmer()
 lemmatizer = WordNetLemmatizer()
@@ -38,6 +43,9 @@ def preprocess_text(text):
     return preprocessed_text
 
 df['text_preprocessed'] = df['overview_french'].apply(preprocess_text)
+
+# Le reste de votre code
+
 
 # Créer une instance de TfidfVectorizer et transformer le texte prétraité en vecteurs TF-IDF
 vectorizer = TfidfVectorizer(max_df=0.99, min_df=2)
