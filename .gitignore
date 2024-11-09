@@ -1,7 +1,28 @@
-# Ignorer l'environnement virtuel et les fichiers temporaires
+# Ignorer les dossiers d'environnement virtuel
 venv/
+env/
+
+# Ignorer les fichiers de compilation Python
 __pycache__/
-*.pyc
-*.pyo
+*.py[cod]
+*$py.class
+
+# Ignorer les fichiers Jupyter Notebook
+*.ipynb
+.ipynb_checkpoints/
+
+# Ignorer les fichiers de traitement de texte
+*.docx
+
+# Ignorer les fichiers spécifiques à l'éditeur
+.vscode/
+.idea/
+
+# Ignorer les fichiers de logs, de données et temporaires
 *.log
-Systeme-de-recommandations-films/
+*.csv
+*.tmp
+*.bak
+
+# Autres fichiers/dossiers potentiellement inutiles
+*.db
